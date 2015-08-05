@@ -35,7 +35,7 @@ build: deps
 	# OS X build
 	GOARCH=amd64 GOOS=darwin gb build && mv bin/gopolyd bin/darwin_gopolyd
 
-embed: deps
+embed: deps ui-deps
 	rice append --exec bin/linux_gopolyd
 	rice append --exec bin/darwin_gopolyd
 
