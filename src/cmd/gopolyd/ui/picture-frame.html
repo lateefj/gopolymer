@@ -1,0 +1,45 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="picture-frame">
+
+  <!-- scoped CSS for this element -->
+  <style>
+    div {
+      display: inline-block;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    /* Wish this worked :( 
+    img {
+      width: 100%;
+      height: auto;
+        object-fit: contain;
+    }*/
+#pic {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("img/abel.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 25px;
+}
+  </style>
+
+  <template>
+    <div id="pic">
+      <!-- any children are rendered here -->
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: "picture-frame",
+    });
+  </script>
+
+</dom-module>

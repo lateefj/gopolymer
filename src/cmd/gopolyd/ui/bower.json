@@ -1,0 +1,22 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "homepage": "https://github.com/lateefj/gopolymer",
+  "authors": [
+    "Lateef Jackson <lateef.jackson@gmail.com>"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.0.4",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.3",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.3",
+    "paper-material": "PolymerElements/paper-material#~1.0.1"
+  }
+}

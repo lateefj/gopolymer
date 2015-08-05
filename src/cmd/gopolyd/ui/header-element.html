@@ -1,0 +1,28 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="bower_components/paper-material/paper-material.html">
+<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+
+<dom-module id="dom-element">
+  <template>
+  <paper-material elevation="1" animated="true">
+    <iron-ajax url="/api" handle-as="json" last-response="{{data}}" on-response="handleResponse" auto></iron-ajax>
+    <paper-header-panel mode="standard">
+      <paper-toolbar>
+        <div>Data is: <b id="foo"></b></div>
+      </paper-toolbar>
+    </paper-header-panel>
+  </paper-material>
+  </template>
+
+  <script>
+    Polymer({
+      is: "dom-element",
+      handleResponse: function(resp) {
+        // Hack hack hack example
+        document.querySelector('#foo').innerHTML = this.data.foo;
+      }
+    });
+  </script>
+
+</dom-module>
