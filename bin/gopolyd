@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is just for client side applications that are used in Darwin. Server apps just get compiled straight to linux and that is that.
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 os=$( echo `uname` | tr '[:upper:]' '[:lower:]' )
