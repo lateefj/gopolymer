@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+os=$( echo `uname` | tr '[:upper:]' '[:lower:]' )
+
+
+exec "${DIR}/${os}_gopolymerd"

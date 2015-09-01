@@ -6,7 +6,7 @@ GO_DEPS = github.com/GeertJohan/go.rice github.com/GeertJohan/go.rice/rice githu
 all: build ui-build embed
 
 clean:
-	rm -rf bin
+	rm bin/*_gopolymerd
 
 ui-deps:
 	npm install -g bower

@@ -56,7 +56,7 @@ Javascript frameworks of late seem sound great "write less code" but in the end 
 
 make build  # Ofcourse it uses make!!
 
-./bin/gopolyd # Probaly 
+./bin/gopolyd # Probably
 
 ```
 
