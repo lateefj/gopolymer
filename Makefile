@@ -3,7 +3,7 @@ SHELL := /bin/bash
 # This would be a nice discover plugin that would traverse the code base and vendor external packages
 GO_DEPS = github.com/GeertJohan/go.rice github.com/GeertJohan/go.rice/rice github.com/Sirupsen/logrus
 
-all: clean compile embed
+all: build ui-build embed
 
 clean:
 	rm -rf bin
@@ -13,7 +13,9 @@ ui-deps:
 	npm install -g vulcanize # TODO figure out a way to get polymer to be packagable
 
 ui-build:
-	cd src/cmd/gopolyd/ui/ && bower install
+	cd src/cmd/gopolyd/ui/ && \
+		bower install ; \
+		ls bower_components
 
 deps:
 	go get github.com/constabulary/gb/...
@@ -33,15 +35,26 @@ vendor: deps
 
 build: deps
 	mkdir -p bin
-	# Would be nice if gb would fix this with a crosscompile plugin?
 	# Linux build
-	#GOARCH=amd64 GOOS=linux gb build && mv bin/gopolyd bin/linux_gopolyd
+	GOARCH=amd64 GOOS=linux gb build
+	if [ -a bin/gopolyd ]; \
+	then \
+		mv bin/gopolyd bin/linux_gopolymerd; \
+		else \
+		mv bin/gopolyd-linux-amd64 bin/linux_gopolymerd; \
+	fi;
 	# OS X build
-	#GOARCH=amd64 GOOS=darwin gb build && mv bin/gopolyd bin/darwin_gopolyd
-	gb build
+	GOARCH=amd64 GOOS=darwin gb build 
+	if [ -a bin/gopolyd ]; \
+	then \
+		mv bin/gopolyd bin/darwin_gopolymerd; \
+		else \
+		mv bin/gopolyd-darwin-amd64 bin/darwin_gopolymerd; \
+	fi;
 
 embed: build ui-build
-	cd src/cmd/gopolyd/ && rice append --exec ../../../bin/gopolyd
+	cd src/cmd/gopolyd/ && rice append --exec ../../../bin/linux_gopolymerd
+	cd src/cmd/gopolyd/ && rice append --exec ../../../bin/darwin_gopolymerd
 
 
 # Crosscompile sadness :(
